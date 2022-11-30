@@ -1,0 +1,70 @@
+version: '3'
+services:
+  eureka-server:
+    image: shubh1sinha/tour-eureak-server:1.0
+    container_name: eureka-server
+    expose:
+    - "9190"
+    ports: 
+    - 9190:9190
+
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    expose:
+    - "27018"
+    ports: 
+    - 27017:27017
+
+  app-admin-microservice:
+    image: shubh1sinha/app-admin-microservice:1.0
+    expose:
+    - "8281"
+    ports:
+    - 8271:8281
+    environment:
+      - JAVA_OPTS=
+            -DEUREKA_SERVER=http://eureka-server:9190/eureka -DHOST_NAME=mongo
+      
+    links: 
+        - eureka-server
+        - mongo
+        
+  app-employee-microservice:
+    image: shubh1sinha/app-employee-microservice:1.0
+    expose:
+    - "8181"
+    ports:
+    - 8171:8181
+    environment:
+      - JAVA_OPTS=
+            -DEUREKA_SERVER=http://eureka-server:9190/eureka -DHOST_NAME=mongo
+      
+    links: 
+        - eureka-server
+        - mongo
+        
+  app-management-service:
+    image: shubh1sinha/app-management-service:1.0
+    expose:
+    - "8381"
+    ports:
+    - 8371:8381
+    environment:
+      - JAVA_OPTS=
+            -DEUREKA_SERVER=http://eureka-server:9190/eureka
+      
+    links: 
+        - eureka-server
+
+  employee-management-react:
+    image: shubh1sinha/employee-management-react:1.0
+    ports:
+    - "3001:3001"
+    environment:
+      - JAVA_OPTS=
+            -DEUREKA_SERVER=http://tour-eureka-server:9190/eureka  #(name of eureka host==eureka container name)
+      
+    links: 
+        - eureka-server
+        
