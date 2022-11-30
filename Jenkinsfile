@@ -56,6 +56,7 @@ pipeline{
 				bat "docker tag app-management-service:1.0 shubh1sinha/app-management-service:1.0"
             }
         }
+		
         
         stage("dockerize"){
             steps{
