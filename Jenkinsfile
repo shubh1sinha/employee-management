@@ -22,8 +22,8 @@ pipeline{
 			steps{
 					    dir('employee-management-react-app') {
 							bat "cd"
+							bat "docker build -t shubh1sinha/employee-management-react:1.0 ."
 					}
-					bat "docker build -t shubh1sinha/employee-management-react:1.0 ."
             }
 		}
 		stage("Home-location"){
