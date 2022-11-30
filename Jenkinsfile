@@ -1,43 +1,53 @@
 pipeline{
     agent any
     stages{
-        stage("checkout"){
+        stage("checkout-1"){
             steps{
                  "git clone https://github.com/shubh1sinha/employee-management.git"
             }
-			            steps{
+		}
+			stage("checkout-2"){
+			steps{
                  "git clone https://github.com/shubh1sinha/employee-management-react-app.git"
             }
         }
         
-         stage("package"){
+         stage("package-1"){
             steps{
             bat "mvn clean package"
             }
+		}
+		stage("Docker-Build"){
 			steps{
-            bat "docker build -t shubh1sinha/employee-management-react:1.0 ."
+				bat "docker build -t shubh1sinha/employee-management-react:1.0 ."
             }
 			
         }
         
-        stage("docke-tag"){
+        stage("docke-tag-1"){
             steps{
-            bat "docker tag app-admin-microservice:1.0 shubh1sinha/app-admin-microservice:1.0"
+				bat "docker tag app-admin-microservice:1.0 shubh1sinha/app-admin-microservice:1.0"
             }
+			}
+		stage("docke-tag-2"){
             steps{
-            bat "docker tag tour-eureak-server:1.0 shubh1sinha/tour-eureak-server:1.0"
+				bat "docker tag tour-eureak-server:1.0 shubh1sinha/tour-eureak-server:1.0"
             }
+			}
+		stage("docke-tag-3"){
             steps{
-            bat "docker tag app-employee-microservice:1.0 shubh1sinha/app-employee-microservice:1.0"
+				bat "docker tag app-employee-microservice:1.0 shubh1sinha/app-employee-microservice:1.0"
             }
+			}
+		stage("docke-tag-4"){
             steps{
-            bat "docker tag app-management-service:1.0 shubh1sinha/app-management-service:1.0"
+				bat "docker tag app-management-service:1.0 shubh1sinha/app-management-service:1.0"
             }
         }
         
         stage("dockerize"){
             steps{
-            bat "docker-compose up"
+				bat "docker-compose up"
             }
         }
     }
