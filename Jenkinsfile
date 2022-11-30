@@ -17,12 +17,22 @@ pipeline{
             bat "mvn clean package"
             }
 		}
+		stage("Enter-Location"){
+			steps{
+				bat "cd employee-management-react-app"
+            }
+		}
 		stage("Docker-Build"){
 			steps{
 				bat "docker build -t shubh1sinha/employee-management-react:1.0 ."
             }
 			
         }
+		stage("Home-location"){
+			steps{
+				bat "cd .."
+            }
+		}
         
         stage("docke-tag-1"){
             steps{
