@@ -20,7 +20,6 @@ pipeline{
 		stage("Enter-Location"){
 			
 			steps{
-					bat "cd"
 					    dir('employee-management-react-app') {
 							bat "cd"
 					}
