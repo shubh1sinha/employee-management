@@ -3,12 +3,12 @@ pipeline{
     stages{
         stage("checkout-1"){
             steps{
-                 "git clone https://github.com/shubh1sinha/employee-management.git"
+                 bat "git clone https://github.com/shubh1sinha/employee-management.git"
             }
 		}
 			stage("checkout-2"){
 			steps{
-                 "git clone https://github.com/shubh1sinha/employee-management-react-app.git"
+                 bat "git clone https://github.com/shubh1sinha/employee-management-react-app.git"
             }
         }
         
