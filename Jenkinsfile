@@ -39,7 +39,6 @@ pipeline{
 					    dir('employee-management') {
 							bat "cd"
 					}
-					bat "cd"
             }
 		}
         
