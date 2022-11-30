@@ -61,7 +61,7 @@ pipeline{
         stage("dockerize"){
             steps{
 				bat "docker-compose up"
-				sleep(3600)
+				sleep(360)
 				bat "docker-compose down"
             }
         }
