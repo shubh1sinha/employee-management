@@ -18,8 +18,13 @@ pipeline{
             }
 		}
 		stage("Enter-Location"){
+			
 			steps{
-				bat "cd employee-management-react-app"
+					bat "cd"
+					    dir('employee-management-react-app') {
+							bat "cd"
+					}
+					bat "cd"
             }
 		}
 		stage("Docker-Build"){
@@ -30,7 +35,11 @@ pipeline{
         }
 		stage("Home-location"){
 			steps{
-				bat "cd .."
+					bat "cd"
+					    dir('employee-management') {
+							bat "cd"
+					}
+					bat "cd"
             }
 		}
         
