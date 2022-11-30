@@ -24,7 +24,6 @@ pipeline{
 					    dir('employee-management-react-app') {
 							bat "cd"
 					}
-					bat "cd"
             }
 		}
 		stage("Docker-Build"){
@@ -39,6 +38,7 @@ pipeline{
 					    dir('employee-management') {
 							bat "cd"
 					}
+					
             }
 		}
         
