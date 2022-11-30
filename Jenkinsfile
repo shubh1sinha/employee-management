@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage("checkout"){
             steps{
-                 "https://github.com/shubh1sinha/employee-management.git"
+                 "git clone https://github.com/shubh1sinha/employee-management.git"
             }
         }
         
