@@ -5,12 +5,19 @@ pipeline{
             steps{
                  "git clone https://github.com/shubh1sinha/employee-management.git"
             }
+			            steps{
+                 "git clone https://github.com/shubh1sinha/employee-management-react-app.git"
+            }
         }
         
          stage("package"){
             steps{
             bat "mvn clean package"
             }
+			steps{
+            bat "docker build -t shubh1sinha/employee-management-react:1.0 ."
+            }
+			
         }
         
         stage("docke-tag"){
