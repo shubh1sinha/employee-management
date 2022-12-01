@@ -56,12 +56,21 @@ pipeline{
 				bat "docker tag app-management-service:1.0 shubh1sinha/app-management-service:1.0"
             }
         }
+        stage("docke-push"){
+            steps{
+				bat "docker push shubh1sinha/app-management-service:1.0"
+				bat "docker push shubh1sinha/app-employee-microservice:1.0"
+				bat "docker push shubh1sinha/tour-eureak-server:1.0"
+				bat "docker push shubh1sinha/app-admin-microservice:1.0"
+				bat "docker push shubh1sinha/employee-management-react:1.0"
+            }
+        }
 		
         
         stage("deploy"){
             steps{
 				bat "docker-compose up"
-				sleep(360)
+				sleep(30)
 				bat "docker-compose down"
             }
         }
