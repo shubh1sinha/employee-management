@@ -56,16 +56,6 @@ pipeline{
 				sh "docker tag app-management-service:1.0 shubh1sinha/app-management-service:1.0"
             }
         }
-        stage("docke-push"){
-            steps{
-			docker.withRegistry('https://registry.hub.docker.com', 'dockerhub'){
-				sh "docker push shubh1sinha/app-management-service:1.0"
-				sh "docker push shubh1sinha/app-employee-microservice:1.0"
-				sh "docker push shubh1sinha/tour-eureak-server:1.0"
-				sh "docker push shubh1sinha/app-admin-microservice:1.0"
-				sh "docker push shubh1sinha/employee-management-react:1.0"
-				}
-            }
-        }
+
     }
  }
