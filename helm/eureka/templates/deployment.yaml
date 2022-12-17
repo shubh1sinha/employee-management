@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: eureka-container
-          image: shubh1sinha/tour-eureak-server:3.0
+          image: shubh1sinha/tour-eureak-server:1.0
           imagePullPolicy: Always
           resources:
             limits:
