@@ -9,6 +9,6 @@ spec:
     app: admin-app
   type: LoadBalancer
   ports:
-  - nodePort: 30001
+  - nodePort: 31000
     port: 80
     targetPort: 8281
