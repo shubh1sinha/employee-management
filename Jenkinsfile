@@ -81,7 +81,7 @@ pipeline{
 
         stage("helm-mongo-chart"){
             steps{
-                sh "helm install repo stable/mongodb "
+                sh "helm install mongodb stable/mongodb "
             }
         }
 
