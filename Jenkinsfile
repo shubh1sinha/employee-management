@@ -17,23 +17,27 @@ pipeline{
         }
         stage("docker-build app admin-microservice"){
             steps{
-                sh "cd app-admin-microservice"
+				dir('app-admin-microservice') {
+				sh "cd"
                 sh "pwd"
                 sh "sudo docker build -t shubh1sinha/app-admin-microservice:2.0 ."
-                sh "cd"
+            }
+			dir('employee-pipeline') {
+				sh "cd"
                 sh "pwd"
             }
-        }
+            }
+    }
 
-        stage("docker-build app-employee-microservice"){
-            steps{
-                sh "cd app-admin-microservice"
-                sh "pwd"
-                sh "sudo docker build -t shubh1sinha/app-employee-microservice:2.0 ."
-                sh "cd"
-                sh "pwd"
-            }
-        }
+        // stage("docker-build app-employee-microservice"){
+        //     steps{
+        //         sh "cd app-admin-microservice"
+        //         sh "pwd"
+        //         sh "sudo docker build -t shubh1sinha/app-employee-microservice:2.0 ."
+        //         sh "cd"
+        //         sh "pwd"
+        //     }
+        // }
 
 		
         
