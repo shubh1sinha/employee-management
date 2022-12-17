@@ -8,7 +8,7 @@ pipeline{
                  sh "sudo rm -rf employee-pipeline"
             }
 		}
-    
+    }
     stages{
         stage("Checkout-Spring-App"){
             steps{
