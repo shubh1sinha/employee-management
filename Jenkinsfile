@@ -1,6 +1,13 @@
 pipeline{
 
     agent any
+
+    stages{
+        stage("Wipe Out Folder"){
+            steps{
+                 sh "sudo rm -rf employee-pipeline"
+            }
+		}
     
     stages{
         stage("Checkout-Spring-App"){
