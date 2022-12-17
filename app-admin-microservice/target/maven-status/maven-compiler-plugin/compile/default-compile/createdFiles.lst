@@ -1,0 +1,7 @@
+com\spring\rest\AdminRestController.class
+com\spring\service\AdminServiceDAO.class
+com\spring\AppAdminMicroserviceApplication.class
+com\spring\entity\Admin.class
+com\spring\repository\AdminRepository.class
+com\spring\service\AdminService.class
+com\spring\dto\AdminDTO.class

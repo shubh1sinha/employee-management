@@ -1,4 +1,3 @@
 FROM openjdk:11
-ADD target/app-admin-microservice-1.0.jar /home/app.jar
-WORKDIR /home/
-CMD ["java","-jar","app.jar"]
+COPY target/app-admin-microservice.jar admin.jar
+ENTRYPOINT ["java", "-jar" ,"/admin.jar"]

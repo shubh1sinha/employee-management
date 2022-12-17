@@ -1,0 +1,7 @@
+com\spring\entity\Employee.class
+com\spring\dto\EmployeeDTO.class
+com\spring\repository\EmployeeRepository.class
+com\spring\AppEmployeeMicroserviceApplication.class
+com\spring\service\EmployeeService.class
+com\spring\rest\EmployeeRestController.class
+com\spring\service\EmployeeServiceDAO.class
