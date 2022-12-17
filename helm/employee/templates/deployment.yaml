@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: employee-container
-          image: shubh1sinha/app-employee-microservice:2.0
+          image: shubh1sinha/app-employee-microservice:3.0
           imagePullPolicy: Always
           resources:
             limits:
