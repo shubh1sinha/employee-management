@@ -9,6 +9,6 @@ spec:
     app: eureka-app
   type: LoadBalancer
   ports:
-  - nodePort: 30020
+  - nodePort: 30021
     port: 80
     targetPort: 9190

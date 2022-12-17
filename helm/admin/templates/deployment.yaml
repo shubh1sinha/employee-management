@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: admin-container
-          image: shubh1sinha/app-admin-microservice:1.0
+          image: shubh1sinha/app-admin-microservice:3.0
           imagePullPolicy: Always
           ports:
           - containerPort: 8281

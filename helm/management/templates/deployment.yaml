@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: management-container
-          image: shubh1sinha/app-management-service:1.0
+          image: shubh1sinha/app-management-service:3.0
           imagePullPolicy: Always
           resources:
             limits:
