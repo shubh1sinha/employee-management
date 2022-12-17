@@ -15,33 +15,76 @@ pipeline{
                 sh "pwd"
             }
         }
-        stage("docker-build app admin-microservice"){
+
+        stage("docker-build app-admin-microservice"){
             steps{
-				dir('app-admin-microservice') {
-				sh "cd"
-                sh "pwd"
-                sh "sudo docker build -t shubh1sinha/app-admin-microservice:2.0 ."
+			    dir('app-admin-microservice') {
+				    sh "cd"
+                    sh "pwd"
+                    sh "sudo docker build -t shubh1sinha/app-admin-microservice:2.0 ."
+                }
+			    dir('employee-pipeline') {
+				    sh "cd"
+                    sh "pwd"
+                }
             }
-			dir('employee-pipeline') {
-				sh "cd"
-                sh "pwd"
-            }
-            }
-    }
+        }
 
-        // stage("docker-build app-employee-microservice"){
-        //     steps{
-        //         sh "cd app-admin-microservice"
-        //         sh "pwd"
-        //         sh "sudo docker build -t shubh1sinha/app-employee-microservice:2.0 ."
-        //         sh "cd"
-        //         sh "pwd"
-        //     }
-        // }
+        stage("docker-build app-employee-microservice"){
+            steps{
+			    dir('app-employee-microservice') {
+				    sh "cd"
+                    sh "pwd"
+                    sh "sudo docker build -t shubh1sinha/app-employee-microservice:2.0 ."
+                }
+			    dir('employee-pipeline') {
+				    sh "cd"
+                    sh "pwd"
+                }
+            }
+        }
 
+        stage("docker-build app-management-service"){
+            steps{
+			    dir('app-management-service') {
+				    sh "cd"
+                    sh "pwd"
+                    sh "sudo docker build -t shubh1sinha/app-management-service:2.0 ."
+                }
+			    dir('employee-pipeline') {
+				    sh "cd"
+                    sh "pwd"
+                }
+            }
+        }
+
+        stage("docker-push all images"){
+            steps{
+                sh "sudo docker push shubh1sinha/app-admin-microservice:2.0"
+                sh "sudo docker push shubh1sinha/app-employee-microservice:2.0"
+                sh "sudo docker push shubh1sinha/app-management-service:2.0"
+            }
+        }
 		
-        
+        stage("helm-chart"){
+            steps{
+                        sh 'pwd'
+                        sh 'cp -R helm/* .'
+						sh 'ls -ltr'
+                        sh 'pwd'
+                        sh '/usr/local/bin/helm upgrade --install admin-app admin'
+                        sh '/usr/local/bin/helm upgrade --install employee-app employee'
+                        sh '/usr/local/bin/helm upgrade --install eureka-app eureka'
+                        sh '/usr/local/bin/helm upgrade --install management-app management'
+            }
+        }
 
+        stage("helm-mongo-chart"){
+            steps{
+                sh "helm install repo stable/mongodb "
+            }
+        }
 
     }
- }
+
+}

@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: admin-deployment
+   
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: admin-pod
+      labels:
+        app: admin-app
+    spec:
+      containers:
+        - name: admin-container
+          image: shubh1sinha/app-admin-microservice:2.0
+          imagePullPolicy: Always
+          resources:
+            limits:
+              cpu: '50m'
+              memory: '1G'
+            requests:
+              cpu: '1m'
+              memory: '348Mi'
+  selector:
+    matchLabels:
+     app: admin-app
