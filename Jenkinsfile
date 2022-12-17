@@ -1,8 +1,7 @@
 pipeline{
-    tools{
-        maven "3.8.6"
-    }
+
     agent any
+    
     stages{
         stage("Checkout-Spring-App"){
             steps{
