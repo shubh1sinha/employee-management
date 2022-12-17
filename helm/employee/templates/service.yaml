@@ -9,6 +9,6 @@ spec:
     app: employee-app
   type: LoadBalancer
   ports:
-  - nodePort: 30011
+  - nodePort: 30010
     port: 80
     targetPort: 8181
