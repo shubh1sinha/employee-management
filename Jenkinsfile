@@ -58,13 +58,13 @@ pipeline{
         //     }
         // }
 
-        stage("docker-push all images"){
-            steps{
-                sh "sudo docker push shubh1sinha/app-admin-microservice:1.0"
-                sh "sudo docker push shubh1sinha/app-employee-microservice:1.0"
-                sh "sudo docker push shubh1sinha/app-management-service:1.0"
-            }
-        }
+        // stage("docker-push all images"){
+        //     steps{
+        //         sh "sudo docker push shubh1sinha/app-admin-microservice:1.0"
+        //         sh "sudo docker push shubh1sinha/app-employee-microservice:1.0"
+        //         sh "sudo docker push shubh1sinha/app-management-service:1.0"
+        //     }
+        // }
 		
         stage("helm-chart"){
             steps{
