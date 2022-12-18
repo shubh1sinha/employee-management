@@ -6,7 +6,7 @@ spring:
     name: app-employee-microservice
  data:
     mongodb:
-      host: ${HOST_NAME:mongodb}
+      host: ${HOST_NAME:mongo-0.mongo}
       port: 27017
       database: employee
  

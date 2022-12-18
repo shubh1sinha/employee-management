@@ -91,12 +91,7 @@ pipeline{
                         sh '/usr/local/bin/helm upgrade --install employee-app employee'
                         sh '/usr/local/bin/helm upgrade --install eureka-app eureka'
                         sh '/usr/local/bin/helm upgrade --install management-app management'
-            }
-        }
-
-        stage("helm-mongo-chart"){
-            steps{
-                sh "helm install mongodb stable/mongodb "
+                        sh '/usr/local/bin/helm upgrade --install mongo mongo'
             }
         }
 
@@ -105,6 +100,7 @@ pipeline{
                 sh 'helm list'
                 sh 'kubectl get pods'
                 sh 'kubectl get svc'
+                sh 'rs.status()'
             }
         }
 
