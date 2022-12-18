@@ -19,7 +19,7 @@ spring:
     enabled: true
     sources:
      - namespace: default
-       name: mongo-conf
+       name: mongo-config
     reload:
      enables: true
      mode: polling
