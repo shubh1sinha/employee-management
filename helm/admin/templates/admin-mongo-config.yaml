@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: mongo-config
+  name: admin-mongo-config
 data:
   host: mongo
   database: employee

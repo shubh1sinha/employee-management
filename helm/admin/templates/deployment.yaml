@@ -45,7 +45,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   key: host
-                  name: mongo-config          
+                  name: admin-mongo-config          
   selector:
     matchLabels:
      app: admin-app
