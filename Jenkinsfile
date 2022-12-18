@@ -58,11 +58,26 @@ pipeline{
             }
         }
 
+        stage("docker-build employee-eureka-server"){
+            steps{
+			    dir('employee-eureka-server') {
+				    sh "cd"
+                    sh "pwd"
+                    sh "sudo docker build -t shubh1sinha/eureka-server:1.0 ."
+                }
+			    dir('employee-pipeline') {
+				    sh "cd"
+                    sh "pwd"
+                }
+            }
+        }
+
         stage("docker-push all images"){
             steps{
                 sh "sudo docker push shubh1sinha/app-admin-microservice:3.0"
                 sh "sudo docker push shubh1sinha/app-employee-microservice:3.0"
                 sh "sudo docker push shubh1sinha/app-management-service:3.0"
+                sh "sudo docker push shubh1sinha/eureka-server:1.0"
             }
         }
 		
