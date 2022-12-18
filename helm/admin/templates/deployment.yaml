@@ -30,17 +30,17 @@ spec:
               valueFrom:
                 secretKeyRef:
                   key: username
-                  name: mongo-secret
+                  name: admin-mongo-secret
             - name: MONGO_PASSWORD
               valueFrom:
                 secretKeyRef:
                   key: password
-                  name: mongo-secret 
+                  name: admin-mongo-secret 
             - name: MONGO_DB
               valueFrom:
                 secretKeyRef:
                   key: database
-                  name: mongo-config
+                  name: admin-mongo-config
             - name: MONGO_HOST
               valueFrom:
                 secretKeyRef:
