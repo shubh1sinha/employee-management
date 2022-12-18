@@ -7,7 +7,7 @@ spring:
     
 eureka:
   instance:
-    hostname: "${eureka-0}.eureka"
+    hostname: "eureka-0.eureka"
   client:
     register-with-eureka: false
     fetch-registry: false
