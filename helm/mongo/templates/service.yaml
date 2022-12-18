@@ -16,39 +16,61 @@ spec:
 ---
 
 apiVersion: apps/v1
-kind: StatefulSet
+kind: PersistentVolumeClaim
+metadata:
+  name: mongo-pv-clain
+  labels:
+    app: mongo
+    tier: database
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: mongo
+  labels:
+    app: mongo
 spec:
   selector:
     matchLabels:
       app: mongo
-  serviceName: mongo
-  replicas: 3
+  replicas: 1
   template:
     metadata:
       labels:
         app: mongo
+      name: mongo
+
     spec:
-      terminationGracePeriodSeconds: 10
       containers:
-      - name: mongo
-        image: mongo
-        command: 
-        - mongod 
-        - --bind_ip_all
-        - --replSet
-        - rs0
-        ports:
-        - containerPort: 27017
-        volumeMounts:
-        - name: mongo-volume
-          mountPath: /data/db
-  volumeClaimTemplates:
-  - metadata:
-      name: mongo-volume
-    spec:
-      accessModes: [ ReadWriteOnce ]
-      resources:
-        requests:
-          storage: 1Gi 
+        - name: mongo
+          image: mongo:latest
+
+          env:
+            - name: MONGO_INITDB_ROOT_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  key: username
+                  name: mongo-secret
+            - name: MONGO_INITDB_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: mongo-secret
+          ports:
+            - containerPort: 27017
+              name: mongo
+          volumeMounts:
+            - mountPath: /data/db
+              name: mongo-persistent-storage
+      volumes:
+        - name: mongo-persistent-storage
+          persistentVolumeClaim:
+            claimName: mongo-pv-clain
+        

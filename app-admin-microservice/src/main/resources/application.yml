@@ -6,9 +6,25 @@ spring:
     name: app-admin-microservice
  data:
     mongodb:
-      host: ${HOST_NAME:mongo-0}
+      host: '${MONGO_HOST}'
+      database: '${MONGO_DB}'
       port: 27017
-      database: employee
+      username: '${MONGO_USERNAM}'
+      password: '${MONGO_PASSWORD}'
+ cloud:
+  kubernetes:
+   secets:
+    name: db-secret
+   config: 
+    enabled: true
+    sources:
+     - namespace: default
+       name: mongo-conf
+    reload:
+     enables: true
+     mode: polling
+     period: 1000
+   
  
 
 eureka:

@@ -25,6 +25,27 @@ spec:
             requests:
               cpu: '1m'
               memory: '348Mi'
+          env:
+            - name: MONGO_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  key: username
+                  name: mongo-secret
+            - name: MONGO_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: mongo-secret 
+            - name: MONGO_DB
+              valueFrom:
+                secretKeyRef:
+                  key: database
+                  name: mongo-config
+            - name: MONGO_HOST
+              valueFrom:
+                secretKeyRef:
+                  key: host
+                  name: mongo-config          
   selector:
     matchLabels:
      app: admin-app
