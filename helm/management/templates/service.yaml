@@ -9,6 +9,6 @@ spec:
     app: management-app
   type: LoadBalancer
   ports:
-  - nodePort: 30030
+  - nodePort: 30031
     port: 80
     targetPort: 8381
