@@ -8,6 +8,14 @@ pipeline{
                  sh "git clone https://github.com/shubh1sinha/employee-management.git"
             }
 		}
+
+        stage("Delete Docker Images"){
+            steps{
+                 sh "sudo docker rmi $(sudo docker image ls -a -q)"
+            }
+		}
+
+
         stage("Package-Application"){
             steps{
                 sh "sudo  /home/shusinha5/apache-maven-3.8.6/bin/mvn --v"
