@@ -102,6 +102,7 @@ pipeline{
 
         stage("Kubernetes-check-pods"){
             steps{
+                sh 'helm list'
                 sh 'kubectl get pods'
                 sh 'kubectl get svc'
             }
