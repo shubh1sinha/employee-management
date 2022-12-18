@@ -101,7 +101,6 @@ pipeline{
                 sh 'helm list'
                 sh 'kubectl get pods'
                 sh 'kubectl get svc'
-                sh 'rs.status()'
             }
         }
 
