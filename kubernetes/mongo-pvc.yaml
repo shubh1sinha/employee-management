@@ -6,9 +6,8 @@ metadata:
   labels:
     app: mongo
 spec:
-  storageClassName: manual
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   resources:
     requests:
-      storage: 250Mi
+      storage: 1Gi
