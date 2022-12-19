@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: admin-deployment
+   
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: admin-pod
+      labels:
+        app: admin-app
+    spec:
+      containers:
+        - name: admin-container
+          image: shubh1sinha/app-admin-microservice:3.1
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 8281
+            name: http
+            
+          env:
+            - name: MONGO_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  key: username
+                  name: mongo-secret
+            - name: MONGO_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: mongo-secret 
+            - name: MONGO_DB
+              valueFrom:
+                configMapKeyRef:
+                  key: database
+                  name: mongo-conf
+            - name: MONGO_HOST
+              valueFrom:
+                configMapKeyRef:
+                  key: host
+                  name: mongo-conf          
+  selector:
+    matchLabels:
+     app: admin-app

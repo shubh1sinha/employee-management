@@ -2,28 +2,31 @@ server:
  port: 8281
 
 spring:
- application:
+  application:
     name: app-admin-microservice
- data:
+  data:
     mongodb:
       host: '${MONGO_HOST}'
       database: '${MONGO_DB}'
       port: 27017
-      username: '${MONGO_USERNAM}'
+      username: '${MONGO_USERNAME}'
       password: '${MONGO_PASSWORD}'
- cloud:
-  kubernetes:
-   secets:
-    name: db-secret
-   config: 
-    enabled: true
-    sources:
-     - namespace: default
-       name: mongo-config
-    reload:
-     enables: true
-     mode: polling
-     period: 1000
+  cloud:
+    kubernetes:
+      discovery:
+        register: true
+      secrets:
+        name: mongo-secret
+
+      config:
+        enabled: true
+        sources:
+          - namespace: default
+            name: mongo-conf
+      reload:
+        enabled: true
+        mode: polling
+        period: 1000
    
  
 
