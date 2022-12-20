@@ -11,6 +11,7 @@ pipeline{
 
         stage("Package-Application"){
             steps{
+                sh "sudo  /home/shusinha5/apache-maven-3.8.6/bin/mvn --v"
                 sh "sudo /home/shusinha5/apache-maven-3.8.6/bin/mvn clean package"
                 sh "pwd"
             }
