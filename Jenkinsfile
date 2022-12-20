@@ -21,7 +21,7 @@ pipeline{
 			    dir('app-admin-microservice') {
 				    sh "cd"
                     sh "pwd"
-                    sh "sudo docker build -t shubh1sinha/app-admin-microservice:3.0 ."
+                    sh " docker build -t shubh1sinha/app-admin-microservice:3.0 ."
                 }
 			    dir('employee-pipeline') {
 				    sh "cd"
@@ -35,7 +35,7 @@ pipeline{
 			    dir('app-employee-microservice') {
 				    sh "cd"
                     sh "pwd"
-                    sh "sudo docker build -t shubh1sinha/app-employee-microservice:3.0 ."
+                    sh " docker build -t shubh1sinha/app-employee-microservice:3.0 ."
                 }
 			    dir('employee-pipeline') {
 				    sh "cd"
@@ -49,7 +49,7 @@ pipeline{
 			    dir('app-management-service') {
 				    sh "cd"
                     sh "pwd"
-                    sh "sudo docker build -t shubh1sinha/app-management-service:3.0 ."
+                    sh " docker build -t shubh1sinha/app-management-service:3.0 ."
                 }
 			    dir('employee-pipeline') {
 				    sh "cd"
@@ -63,7 +63,7 @@ pipeline{
 			    dir('employee-eureka-server') {
 				    sh "cd"
                     sh "pwd"
-                    sh "sudo docker build -t shubh1sinha/eureka-server:1.0 ."
+                    sh " docker build -t shubh1sinha/eureka-server:1.0 ."
                 }
 			    dir('employee-pipeline') {
 				    sh "cd"
@@ -74,10 +74,10 @@ pipeline{
 
         stage("docker-push all images"){
             steps{
-                sh "sudo docker push shubh1sinha/app-admin-microservice:3.0"
-                sh "sudo docker push shubh1sinha/app-employee-microservice:3.0"
-                sh "sudo docker push shubh1sinha/app-management-service:3.0"
-                sh "sudo docker push shubh1sinha/eureka-server:1.0"
+                sh " docker push shubh1sinha/app-admin-microservice:3.0"
+                sh " docker push shubh1sinha/app-employee-microservice:3.0"
+                sh " docker push shubh1sinha/app-management-service:3.0"
+                sh " docker push shubh1sinha/eureka-server:1.0"
             }
         }
 		
