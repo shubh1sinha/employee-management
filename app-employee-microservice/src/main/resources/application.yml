@@ -1,14 +1,34 @@
 server:
  port: 8181
 
+
 spring:
- application:
-    name: app-employee-microservice
- data:
+  application:
+    name: app-emloyee-microservice
+  data:
     mongodb:
-      host: ${HOST_NAME:mongo}
+      host: '${MONGO_HOST}'
+      database: '${MONGO_DB}'
       port: 27017
-      database: employee
+      username: '${MONGO_USERNAME}'
+      password: '${MONGO_PASSWORD}'
+  cloud:
+    kubernetes:
+      discovery:
+        register: true
+      secrets:
+        name: mongo-secret
+
+      config:
+        enabled: true
+        sources:
+          - namespace: default
+            name: mongo-conf
+      reload:
+        enabled: true
+        mode: polling
+        period: 1000
+   
  
 
 eureka:
@@ -21,3 +41,4 @@ eureka:
     serviceUrl:
       defaultZone: http://eureka-0.eureka.default.svc.cluster.local:9190/eureka
 debug: true 
+
