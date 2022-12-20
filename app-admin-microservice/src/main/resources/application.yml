@@ -6,7 +6,7 @@ spring:
     name: app-admin-microservice
   data:
     mongodb:
-      host: 'mongo-0.mongo.default.svc.cluster.local'
+      host: mongo-0.mongo.default.svc.cluster.local
       database: '${MONGO_DB}'
       port: 27017
       username: '${MONGO_USERNAME}'
