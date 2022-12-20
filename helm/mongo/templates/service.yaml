@@ -1,25 +1,50 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+   name: mongo-conf
+data:
+ host: mongodb-service
+ database: employee
+
 ---
-apiVersion: apps/v1
-kind: Deployment
+
+apiVersion: v1
+kind: Service
 metadata:
   name: mongo
   labels:
     app: mongo
 spec:
-  selector: 
+  clusterIP: None
+  ports:
+    - port: 27017
+      name: mongo
+  selector:
+    app: mongo
+
+---
+
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mongo
+spec:
+  serviceName: "mongo"
+  replicas: 1
+  selector:
     matchLabels:
       app: mongo
-  replicas: 1
   template:
     metadata:
       labels:
         app: mongo
-      name: mongodb-service
     spec:
       containers:
-      - image: mongo:latest
-        name: mongo
-        
+        - name: mongo
+          image: mongo:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 27017
         env:
           - name: MONGO_INITDB_ROOT_USERNAME
             valueFrom:
@@ -41,3 +66,20 @@ spec:
       - name: mongo-persistent-storage # Obtaining 'vloume' from PVC
         persistentVolumeClaim:
           claimName: mongo-pv-claim   
+
+
+---                  
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo-service
+  labels:
+    app: mongo
+spec:
+  selector:
+    app: eureka
+  type: LoadBalancer
+  ports:
+    - port: 27017
+      targetPort: 27017
