@@ -10,5 +10,5 @@ spec:
   type: LoadBalancer
   ports:
   - nodePort: 30011
-    port: 80
+    port: 8181
     targetPort: 8181

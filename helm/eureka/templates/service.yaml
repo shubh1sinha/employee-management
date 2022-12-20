@@ -63,7 +63,8 @@ metadata:
 spec:
   selector:
     app: eureka
-  type: NodePort
+  type: LoadBalancer
   ports:
-    - port: 80
+    - port: 9190
       targetPort: 9190
+      nodePort: 30111
