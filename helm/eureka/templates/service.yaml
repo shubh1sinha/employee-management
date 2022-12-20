@@ -67,4 +67,3 @@ spec:
   ports:
     - port: 9190
       targetPort: 9190
-      nodePort: 30111
