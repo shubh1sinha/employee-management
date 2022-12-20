@@ -50,7 +50,7 @@ pipeline{
 			    dir('app-management-service') {
 				    sh "cd"
                     sh "pwd"
-                    sh " docker build -t shubh1sinha/app-management-service:1.1 ."
+                    sh "sudo docker build -t shubh1sinha/app-management-service:1.1 ."
                 }
 			    dir('employee-pipeline') {
 				    sh "cd"
@@ -64,7 +64,7 @@ pipeline{
 			    dir('employee-eureka-server') {
 				    sh "cd"
                     sh "pwd"
-                    sh " docker build -t shubh1sinha/eureka-server:1.0 ."
+                    sh "sudo docker build -t shubh1sinha/eureka-server:1.0 ."
                 }
 			    dir('employee-pipeline') {
 				    sh "cd"
