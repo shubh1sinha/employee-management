@@ -11,7 +11,8 @@ pipeline{
 
         stage("Package-Application"){
             steps{
-                sh " /home/shusinha5/apache-maven-3.8.6/bin/mvn clean package"
+				sh " /home/azureuser/apache-maven-3.8.6/bin/mvn clean package"
+                sh " /home/azureuser/apache-maven-3.8.6/bin/mvn clean package"
                 sh "pwd"
             }
         }
@@ -21,7 +22,7 @@ pipeline{
 			    dir('app-admin-microservice') {
 				    sh "cd"
                     sh "pwd"
-                    sh " docker build -t shubh1sinha/app-admin-microservice:3.0 ."
+                    sh "sudo docker build -t shubh1sinha/app-admin-microservice:1.1 ."
                 }
 			    dir('employee-pipeline') {
 				    sh "cd"
@@ -35,7 +36,7 @@ pipeline{
 			    dir('app-employee-microservice') {
 				    sh "cd"
                     sh "pwd"
-                    sh " docker build -t shubh1sinha/app-employee-microservice:3.0 ."
+                    sh "sudo docker build -t shubh1sinha/app-employee-microservice:1.1 ."
                 }
 			    dir('employee-pipeline') {
 				    sh "cd"
@@ -49,7 +50,7 @@ pipeline{
 			    dir('app-management-service') {
 				    sh "cd"
                     sh "pwd"
-                    sh " docker build -t shubh1sinha/app-management-service:3.0 ."
+                    sh " docker build -t shubh1sinha/app-management-service:1.1 ."
                 }
 			    dir('employee-pipeline') {
 				    sh "cd"
@@ -74,9 +75,9 @@ pipeline{
 
         stage("docker-push all images"){
             steps{
-                sh " docker push shubh1sinha/app-admin-microservice:3.0"
-                sh " docker push shubh1sinha/app-employee-microservice:3.0"
-                sh " docker push shubh1sinha/app-management-service:3.0"
+                sh " docker push shubh1sinha/app-admin-microservice:1.1"
+                sh " docker push shubh1sinha/app-employee-microservice:1.1"
+                sh " docker push shubh1sinha/app-management-service:1.1"
                 sh " docker push shubh1sinha/eureka-server:1.0"
             }
         }
