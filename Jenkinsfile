@@ -75,10 +75,10 @@ pipeline{
 
         stage("docker-push all images"){
             steps{
-                sh " docker push shubh1sinha/app-admin-microservice:1.1"
-                sh " docker push shubh1sinha/app-employee-microservice:1.1"
-                sh " docker push shubh1sinha/app-management-service:1.1"
-                sh " docker push shubh1sinha/eureka-server:1.0"
+                sh " sudo docker push shubh1sinha/app-admin-microservice:1.1"
+                sh " sudo docker push shubh1sinha/app-employee-microservice:1.1"
+                sh " sudo docker push shubh1sinha/app-management-service:1.1"
+                sh " sudo docker push shubh1sinha/eureka-server:1.0"
             }
         }
 		
