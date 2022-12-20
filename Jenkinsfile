@@ -92,6 +92,7 @@ pipeline{
                         sh '/usr/local/bin/helm upgrade --install employee-app employee'
                         sh '/usr/local/bin/helm upgrade --install eureka-app eureka'
                         sh '/usr/local/bin/helm upgrade --install management-app management'
+						sh '/usr/local/bin/helm upgrade --install mongo management'
             }
         }
 
