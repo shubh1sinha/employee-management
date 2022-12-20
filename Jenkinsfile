@@ -11,7 +11,7 @@ pipeline{
 
         stage("Package-Application"){
             steps{
-                sh "sudo /home/shusinha5/apache-maven-3.8.6/bin/mvn clean package"
+                sh " /home/shusinha5/apache-maven-3.8.6/bin/mvn clean package"
                 sh "pwd"
             }
         }
@@ -91,7 +91,6 @@ pipeline{
                         sh '/usr/local/bin/helm upgrade --install employee-app employee'
                         sh '/usr/local/bin/helm upgrade --install eureka-app eureka'
                         sh '/usr/local/bin/helm upgrade --install management-app management'
-                        sh '/usr/local/bin/helm upgrade --install mongo mongo'
             }
         }
 
