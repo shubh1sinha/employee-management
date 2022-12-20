@@ -45,27 +45,24 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 27017
-        env:
-          - name: MONGO_INITDB_ROOT_USERNAME
-            valueFrom:
-              secretKeyRef:
-                name: mongo-secret
-                key: username
-          - name: MONGO_INITDB_ROOT_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: mongo-secret
-                key: password
-        ports:
-        - containerPort: 27017
-          name: mongo                
-        volumeMounts:
-        - name: mongo-persistent-storage
-          mountPath: /data/db #This is the path in the container on which the mounting will take place.
+          env:
+            - name: MONGO_INITDB_ROOT_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-secret
+                  key: username
+            - name: MONGO_INITDB_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-secret
+                  key: password              
+          volumeMounts:
+            - name: mongo-persistent-storage
+              mountPath: /data/db #This is the path in the container on which the mounting will take place.
       volumes:
-      - name: mongo-persistent-storage # Obtaining 'vloume' from PVC
-        persistentVolumeClaim:
-          claimName: mongo-pv-claim   
+        - name: mongo-persistent-storage # Obtaining 'vloume' from PVC
+          persistentVolumeClaim:
+            claimName: mongo-pv-claim   
 
 
 ---                  
