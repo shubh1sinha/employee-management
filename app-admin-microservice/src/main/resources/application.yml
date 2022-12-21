@@ -6,9 +6,8 @@ spring:
     name: app-admin-microservice
   data:
     mongodb:
-      host: mongodb://my-mongo-db:mTYAGhNEUgTYCTVTPHRlZBIQHzbLJD6yCcMB3jxjW6zZM8BCtV8xel9jikJraJ6JkrYd61BJM5K9ACDbKiCGFQ==@my-mongo-db.mongo.cosmos.azure.com:10255/?ssl=true&retrywrites=false&replicaSet=globaldb&maxIdleTimeMS=120000&appName=@my-mongo-db@
+      uri: mongodb://my-mongo-db:mTYAGhNEUgTYCTVTPHRlZBIQHzbLJD6yCcMB3jxjW6zZM8BCtV8xel9jikJraJ6JkrYd61BJM5K9ACDbKiCGFQ==@my-mongo-db.mongo.cosmos.azure.com:10255/?ssl=true&retrywrites=false&replicaSet=globaldb&maxIdleTimeMS=120000&appName=@my-mongo-db@
       database: employee
-      port: 10255
    
 
 eureka:
