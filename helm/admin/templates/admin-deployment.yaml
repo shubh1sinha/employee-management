@@ -15,31 +15,16 @@ spec:
         - name: admin-container
           image: shubh1sinha/app-admin-microservice:1.1
           imagePullPolicy: Always
+          resources:
+            limits:
+              cpu: '50m'
+              memory: '1G'
+            requests:
+              cpu: '1m'
+              memory: '348Mi'
           ports:
           - containerPort: 8281
-            name: http
-            
-          env:
-            - name: MONGO_USERNAME
-              valueFrom:
-                secretKeyRef:
-                  key: username
-                  name: mongo-secret
-            - name: MONGO_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  key: password
-                  name: mongo-secret 
-            - name: MONGO_DB
-              valueFrom:
-                configMapKeyRef:
-                  key: database
-                  name: mongo-conf
-            - name: MONGO_HOST
-              valueFrom:
-                configMapKeyRef:
-                  key: host
-                  name: mongo-conf          
+            name: http         
   selector:
     matchLabels:
      app: admin-app
