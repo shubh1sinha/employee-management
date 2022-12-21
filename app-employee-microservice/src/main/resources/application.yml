@@ -4,32 +4,14 @@ server:
 
 spring:
   application:
-    name: app-emloyee-microservice
+    name: app-employee-microservice
   data:
     mongodb:
-      host: '${MONGO_HOST}'
-      database: '${MONGO_DB}'
-      port: 27017
-      username: '${MONGO_USERNAME}'
-      password: '${MONGO_PASSWORD}'
-  cloud:
-    kubernetes:
-      discovery:
-        register: true
-      secrets:
-        name: mongo-secret
-
-      config:
-        enabled: true
-        sources:
-          - namespace: default
-            name: mongo-conf
-      reload:
-        enabled: true
-        mode: polling
-        period: 1000
+      host: mongodb://my-mongo-db:mTYAGhNEUgTYCTVTPHRlZBIQHzbLJD6yCcMB3jxjW6zZM8BCtV8xel9jikJraJ6JkrYd61BJM5K9ACDbKiCGFQ==@my-mongo-db.mongo.cosmos.azure.com:10255/?ssl=true&retrywrites=false&replicaSet=globaldb&maxIdleTimeMS=120000&appName=@my-mongo-db@
+      database: employee
+      port: 10255
    
- 
+
 
 eureka:
   instance:
