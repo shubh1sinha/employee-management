@@ -92,7 +92,20 @@ pipeline{
                         sh '/usr/local/bin/helm upgrade --install employee-app employee'
                         sh '/usr/local/bin/helm upgrade --install eureka-app eureka'
                         sh '/usr/local/bin/helm upgrade --install management-app management'
-						sh '/usr/local/bin/helm upgrade --install logs logs'
+            }
+        }
+		
+		stage("logging and monitoring deployment"){
+            steps{
+			    dir('kubernetes') {
+				    sh "cd"
+                    sh "pwd"
+                    sh "kubectl create -f ."
+                }
+			    dir('employee-pipeline') {
+				    sh "cd"
+                    sh "pwd"
+                }
             }
         }
 
