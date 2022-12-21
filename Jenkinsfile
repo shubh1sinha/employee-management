@@ -95,19 +95,6 @@ pipeline{
             }
         }
 		
-		stage("logging and monitoring deployment"){
-            steps{
-			    dir('kubernetes') {
-				    sh "cd"
-                    sh "pwd"
-                    sh "kubectl create -f ."
-                }
-			    dir('employee-pipeline') {
-				    sh "cd"
-                    sh "pwd"
-                }
-            }
-        }
 
         stage("Kubernetes-check-pods"){
             steps{
