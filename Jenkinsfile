@@ -107,7 +107,7 @@ pipeline{
 		
 		stage("docker-pull Grafana"){
             steps{
-				docker run -d --name=grafana -p 3000:3000 grafana/grafana
+				sh 'sudo docker run -d --name=grafana -p 3000:3000 grafana/grafana'
             }
         }
 
