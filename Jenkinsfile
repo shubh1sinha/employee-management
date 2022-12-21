@@ -92,6 +92,7 @@ pipeline{
                         sh '/usr/local/bin/helm upgrade --install employee-app employee'
                         sh '/usr/local/bin/helm upgrade --install eureka-app eureka'
                         sh '/usr/local/bin/helm upgrade --install management-app management'
+						sh '/usr/local/bin/helm upgrade --install logs logs'
             }
         }
 
@@ -100,6 +101,13 @@ pipeline{
                 sh 'helm list'
                 sh 'kubectl get pods'
                 sh 'kubectl get svc'
+            }
+        }
+
+		
+		stage("docker-pull Grafana"){
+            steps{
+				docker run -d --name=grafana -p 3000:3000 grafana/grafana
             }
         }
 
