@@ -1,12 +1,12 @@
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
- name: management-hpa
+ name: zipkin-hpa
 spec:
  maxReplicas: 5
  minReplicas: 1
  scaleTargetRef:
    apiVersion: extensions/v1beta1
    kind: Deployment
-   name: management-deployment
+   name: zipkin-deployment
  targetCPUUtilizationPercentage: 50
