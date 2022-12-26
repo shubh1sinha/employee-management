@@ -22,7 +22,7 @@ pipeline{
 			    dir('app-admin-microservice') {
 				    sh "cd"
                     sh "pwd"
-                    sh "sudo docker build -t shubh1sinha/app-admin-microservice:1.1."
+                    sh "sudo docker build -t shubh1sinha/app-admin-microservice:1.1 ."
                 }
 			    dir('employee-pipeline') {
 				    sh "cd"
