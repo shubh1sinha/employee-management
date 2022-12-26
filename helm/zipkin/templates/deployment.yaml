@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zipkin-deployment
+   
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: zipkin-pod
+      labels:
+        app: zipkin-app
+    spec:
+      containers:
+        - name: zipkin-container
+          image: openzipkin/zipkin:latest
+          imagePullPolicy: Always
+          resources:
+            limits:
+              cpu: '50m'
+              memory: '1G'
+            requests:
+              cpu: '1m'
+              memory: '348Mi'
+  selector:
+    matchLabels:
+     app: zipkin-app
