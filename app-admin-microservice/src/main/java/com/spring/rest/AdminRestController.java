@@ -19,7 +19,7 @@ import com.spring.service.AdminServiceDAO;
 @RequestMapping(value = "/admin")
 public class AdminRestController {
 	
-	private final Logger Logger = LoggerFactory.getLogger(EmployeeRestController.class);
+	private final Logger Logger = LoggerFactory.getLogger(AdminRestController.class);
 
 	@Autowired
 	private AdminServiceDAO adminService;
