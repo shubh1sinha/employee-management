@@ -27,4 +27,7 @@ scrape_configs:
 
     static_configs:
       - targets: ["HOST_ADDRESS:9391"]
+      
+      
+#docker run -p 9090:9090  -v /home/azureuser/prometheus.yml  prom/prometheus
 

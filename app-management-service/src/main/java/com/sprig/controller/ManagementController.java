@@ -2,7 +2,8 @@ package com.sprig.controller;
 
 import java.util.List;
 import java.util.Optional;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
@@ -31,6 +32,8 @@ import com.sprig.entity.Employee;
 @Controller
 @CrossOrigin(origins = "http://localhost:3001/")
 public class ManagementController {
+	
+	private static final Logger logger = LoggerFactory.getLogger(ManagementController.class);
 
 	@Autowired
 	private RestTemplate restTemplate;

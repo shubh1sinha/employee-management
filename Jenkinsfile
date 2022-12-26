@@ -12,7 +12,6 @@ pipeline{
         stage("Package-Application"){
             steps{
 				sh " /home/azureuser/apache-maven-3.8.6/bin/mvn clean package"
-                sh " /home/azureuser/apache-maven-3.8.6/bin/mvn clean package"
                 sh "pwd"
             }
         }
